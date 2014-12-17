@@ -23,4 +23,8 @@
     <string name="vendor_version_default">Unknown</string>
    <!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
+
+<!-- Sound & Notification Settings -->
+    <!-- Volume settings - Volume adjustment sound -->
+    <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
 </resources>

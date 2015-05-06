@@ -97,6 +97,12 @@
                 android:title="@string/kernel_version"
                 android:summary="@string/summary_placeholder"/>
 
+        <!-- Pure version -->
+        <Preference
+                android:key="pure_version"
+                android:title="@string/pure_version"
+                android:summary="@string/pure_version_default"/>
+
         <!-- Detailed build version -->
         <Preference
                 android:key="build_number"

@@ -103,6 +103,12 @@
                 android:title="@string/pure_version"
                 android:summary="@string/pure_version_default"/>
 
+        <!-- Vendor Version -->
+        <Preference
+                android:key="vendor_version"
+                android:title="@string/vendor_version"
+                android:summary="@string/vendor_version_default"/>
+
         <!-- Detailed build version -->
         <Preference
                 android:key="build_number"

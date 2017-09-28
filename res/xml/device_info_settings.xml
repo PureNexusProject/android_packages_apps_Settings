@@ -17,13 +17,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
-        <!-- System update settings - launches activity -->
+        <!-- System update settings - launches activity
         <Preference android:key="additional_system_update_settings"
                     android:title="@string/additional_system_update_settings_list_item_title">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/additional_system_update"
                     android:targetClass="@string/additional_system_update_menu" />
-        </Preference>
+        </Preference> -->
 
         <!-- Device status - launches activity -->
         <Preference android:key="status_info"
@@ -31,14 +31,14 @@
                 android:summary="@string/device_status_summary"
                 android:fragment="com.android.settings.deviceinfo.Status"/>
 
-        <!-- Manual -->
+        <!-- Manual
         <Preference
                 android:key="manual"
                 android:title="@string/manual">
             <intent android:action="android.settings.SHOW_MANUAL" />
-        </Preference>
+        </Preference> -->
 
-        <!-- Legal Information -->
+        <!-- Legal Information
         <Preference
                 android:key="legal_container"
                 android:title="@string/legal_information"
@@ -54,11 +54,11 @@
                 android:key="safety_info"
                 android:title="@string/safety_and_regulatory_info">
                 <intent android:action="android.settings.SHOW_SAFETY_AND_REGULATORY_INFO" />
-        </Preference>
+        </Preference> -->
 
-        <!-- Feedback on the device -->
+        <!-- Feedback on the device
         <Preference android:key="device_feedback"
-                android:title="@string/device_feedback" />
+                android:title="@string/device_feedback" /> -->
 
         <!-- Device hardware model -->
         <Preference

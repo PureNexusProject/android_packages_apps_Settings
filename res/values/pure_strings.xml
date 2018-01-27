@@ -14,6 +14,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- ADB debugging notifications -->
+    <string name="adb_notification">Debugging notification</string>
+    <string name="adb_notification_summary">Display a notification when USB debugging is enabled</string>
 <!-- Device Info Settings -->
     <!-- Pure version -->
     <string name="pure_version">Pure version</string>

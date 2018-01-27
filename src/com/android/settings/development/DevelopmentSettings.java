@@ -124,6 +124,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
      */
     public static final String PREF_SHOW = "show";
 
+    private static final String ADB_NOTIFICATION = "adb_notification";
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String ENABLE_TERMINAL = "enable_terminal";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
@@ -265,6 +266,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private boolean mHaveDebugSettings;
     private boolean mDontPokeProperties;
     private EnableAdbPreferenceController mEnableAdbController;
+    private SwitchPreference mAdbNotification;
     private Preference mClearAdbKeys;
     private SwitchPreference mEnableTerminal;
     private RestrictedSwitchPreference mKeepScreenOn;
@@ -423,6 +425,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
         mEnableAdbController = new EnableAdbPreferenceController(getActivity());
+        mAdbNotification = findAndInitSwitchPref(ADB_NOTIFICATION);
         mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
         if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
             if (debugDebuggingCategory != null) {
@@ -791,6 +794,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         final Preference enableAdb = findPreference(mEnableAdbController.getPreferenceKey());
         mEnableAdbController.updateState(enableAdb);
         mHaveDebugSettings |= mEnableAdbController.haveDebugSettings();
+        updateSwitchPreference(mAdbNotification, Settings.Secure.getInt(cr,
+                Settings.Secure.ADB_NOTIFICATION, 1) != 0);
         if (mEnableTerminal != null) {
             updateSwitchPreference(mEnableTerminal,
                     context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
@@ -2481,7 +2486,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         }
 
-        if (preference == mClearAdbKeys) {
+        if (preference == mAdbNotification) {
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_NOTIFICATION,
+                    mAdbNotification.isChecked() ? 1 : 0);
+        } else if (preference == mClearAdbKeys) {
             if (mAdbKeysDialog != null) dismissDialogs();
             mAdbKeysDialog = new AlertDialog.Builder(getActivity())
                     .setMessage(R.string.adb_keys_warning_message)
